@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PIANO</title>
+    <link rel="stylesheet" href="./input.css" />
+    <link rel="stylesheet" href="./output.css" >
+    <style>
+      @import url("https://fonts.googleapis.com/css2? family=Bebas+Neue&family=Gabarito:wght@500&family=Kanit:ital@1&family=Lobster&family=Luckiest+Guy&family=Poppins:ital,wght@1,300&family=Roboto:ital,wght@0,100;1,900&family=Rubik&display=swap");
+      span input {
+        accent-color: #fff;
+      }
+      .activeKeys{
+        background: linear-gradient(to bottom, #fff 0%, #eee 100%); 
+        box-shadow: inset -5px 5px 20px rgba(0, 0, 0, 0.4) ;
+      } 
+            /* .keyTextShow{
+        visibility: hidden;
+      }
+      .keyTextHidden{
+        visibility: visible;
+      } */
+    </style>
+  </head>
+  <body class="bg-black min-h-screen flex justify-center items-center">
+    <div id="main" class="bg-black w-full">
+      <div id="top" class="flex-col justify-center items-center">
+        <div
+          class="text-gray-200 flex justify-center items-center font-semibold text-3xl m-4 p-2"
+        >
+          <h1>Playable PIANO</h1>
+        </div>
+        <div class="flex items-center justify-center mb-10 mt-10 ml-1 mr-1 gap-3 flex-wrap">
+          <span
+            class="text-gray-200 text-lg font-semibold gap-2 flex items-center text-center h-8"
+            >Volume <input type="range" min="0" max="1" value="0.5" step="any" id="Volume" class="w-24"
+          /></span>
+          <span
+            class="text-gray-200 text-lg font-semibold gap-2 flex items-center text-center h-8"
+            >Show Keys <input type="checkbox" checked="checked" id="showKeys" class="rounded-sm h-5 w-7"
+          /></span>
+        </div>
+      </div>
+      <div id="mainContent" class="flex justify-center mt-2 w-full h-max text-gray-400 ">
+        <ul id="All-keys" class="mr-10 sm:mr-0 sm:flex sm:justify-center sm:mt-20  cursor-pointer uppercase">
+          <li
+            id="Key white" 
+            style="background: linear-gradient(#fff 96%, #eee 4%); "
+            class="list-none w-20 sm:w-16 h-28 sm:h-64 mb-14 sm:m-0 rounded-lg absolute sm:relative sm:border sm:border-solid sm:border-black "
+            data-key="A"
+          >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">a</p></span>
+          </li>
+          <li
+            id="Key black"
+            style="background: linear-gradient(#333, #000); border-radius: 0 0 5px 5px;"
+            class="bg-black list-none inline-block w-14 h-16 sm:h-32 mb-14 ml-14 sm:-ml-7 z-20 relative sm:sticky "
+            data-key="W"
+          >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">w</p></span>
+          </li>
+          <li
+            id="Key white"
+            style="background: linear-gradient(#fff 96%, #eee 4%)"
+            class="list-none inline-block  w-20 sm:w-16 h-28 sm:h-64 mb-14 -ml-7 sm:-ml-7 rounded-lg absolute sm:sticky sm:border sm:border-solid sm:border-black"
+            data-key="S"
+          >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">s</p></span>
+          </li>
+          <li
+            id="Key black"
+            style="background: linear-gradient(#333, #000); border-radius: 0 0 5px 5px;"
+            class="bg-black list-none inline-block w-14 h-16 sm:h-32 mb-14 ml-7 sm:-ml-6 z-20 absolute sm:sticky "
+            data-key="E"
+          >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">e</p></span>
+          </li>
+          <li
+            id="Key white"
+            style=" background: linear-gradient(#fff 96%, #eee 4%)"
+            class="list-none inline-block  w-20 sm:w-16 h-28 sm:h-64 mb-14 ml-14 sm:-ml-8 rounded-lg absolute sm:sticky sm:border sm:border-solid sm:border-black "
+            data-key="D"
+            >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">d</p></span>
+          </li>
+          <br />
+          <li
+            id="Key white"
+            style="background: linear-gradient(#fff 96%, #eee 4%)"
+            class="list-none inline-block  w-20 sm:w-16 h-28 sm:h-64 mb-14 sm:ml-1 rounded-lg absolute sm:sticky sm:border sm:border-solid sm:border-black"
+            data-key="F"
+          >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">f</p></span>
+          </li>
+          <li
+            id="Key black"
+            style="background: linear-gradient(#333, #000); border-radius: 0 0 5px 5px;"
+            class="bg-black list-none inline-block w-14 h-16 sm:h-32 mb-14 ml-14 sm:-ml-8 z-20 relative sm:sticky"
+            data-key="T"
+          >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">t</p></span>
+          </li>
+          <li
+            id="Key white"
+            style="background: linear-gradient(#fff 96%, #eee 4%)"
+            class="list-none inline-block  w-20 sm:w-16 h-28 sm:h-64 mb-14 rounded-lg -ml-8 sm:-ml-6 absolute sm:sticky sm:border sm:border-solid sm:border-black"
+            data-key="G"
+          >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">g</p></span>
+          </li>
+          <li
+            id="Key black"
+            style="background: linear-gradient(#333, #000); border-radius: 0 0 5px 5px;"
+            class="bg-black list-none inline-block w-14 h-16 sm:h-32 mb-14 ml-8 sm:-ml-7 z-20 relative sm:sticky"
+            data-key="Y"
+          >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">y</p></span>
+          </li>
+          <li
+            id="Key white"
+            style="background: linear-gradient(#fff 96%, #eee 4%)"
+            class="list-none inline-block  w-20 sm:w-16 h-28 sm:h-64 mb-14 rounded-lg -ml-9 sm:-ml-7 absolute sm:sticky sm:border sm:border-solid sm:border-black"
+            data-key="H"
+          >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">h</p></span>
+          </li>
+          <br />
+          <li
+            id="Key black"
+            style="background: linear-gradient(#333, #000); border-radius: 0 0 5px 5px;"
+            class="bg-black list-none inline-block w-14 h-16 sm:h-32 mb-14 ml-14 sm:-ml-6 z-20 relative sm:sticky"
+            data-key="U"
+          >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">u</p></span>
+          </li>
+          <li
+            id="Key white"
+            style="background: linear-gradient(#fff 96%, #eee 4%)"
+            class="list-none inline-block  w-20 sm:w-16 h-28 sm:h-64 mb-14 rounded-lg -ml-28 sm:-ml-8 absolute sm:sticky sm:border sm:border-solid sm:border-black"
+            data-key="J"
+          >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">j</p></span>
+          </li>
+          <li
+            id="Key white"
+            style="background: linear-gradient(#fff 96%, #eee 4%)"
+            class="list-none inline-block w-20 sm:w-16 h-28 sm:h-64 mb-14 rounded-lg -ml-7 sm:ml-1 absolute sm:sticky sm:border sm:border-solid sm:border-black"
+            data-key="K"
+          >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">k</p></span>
+          </li>
+          <li
+            id="Key black"
+            style="background: linear-gradient(#333, #000); border-radius: 0 0 5px 5px;"
+            class="bg-black list-none inline-block w-14 h-16 sm:h-32 mb-14 ml-7 sm:-ml-8 z-20 relative sm:sticky"
+            data-key="O"
+          >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">o</p></span>
+          </li>
+          <li
+            id="Key white"
+            style="background: linear-gradient(#fff 96%, #eee 4%)"
+            class="list-none inline-block w-20 sm:w-16 h-28 sm:h-64 mb-14 rounded-lg -ml-7 sm:-ml-6 absolute sm:sticky sm:border sm:border-solid sm:border-black"
+            data-key="I"
+          >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">i</p></span>
+          </li>
+          <br />
+          <li
+            id="Key black"
+            style="background: linear-gradient(#333, #000); border-radius: 0 0 5px 5px;"
+            class="bg-black list-none inline-block w-28 sm:w-14 h-14 sm:h-32 mb-14 ml-4 z-20 sm:-ml-6 relative sm:sticky"
+            data-key="P"
+          >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">p</p></span>
+          </li>
+          <li
+            id="Key white"
+            style="background: linear-gradient(#fff 96%, #eee 4%)"
+            class="list-none inline-block w-28 sm:w-16 h-14 sm:h-64 mb-14 sm:-ml-8 rounded-lg absolute sm:sticky sm:border sm:border-solid sm:border-black"
+            data-key=";"
+          >
+            <span id="keyWords" class="justify-center flex"><p class="absolute bottom-0 p-3">;</p></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+
+    <script src="app.js"></script>
+  </body>
+
+</html>
